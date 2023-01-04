@@ -1,6 +1,39 @@
 // Assignment Code
-var generateBtn = document.querySelector("#generate");
+var lowercase = "abcdefghijklmnopqrstuvwxyz";
+var uppercase = lowercase.toUpperCase();
+var numbers = "1234567890";
+var specialchar = '!@#$%^&*()_+-=<>?/';
+var lowercaseArr = lowercase.split('');
+var uppercaseArr = uppercase.split('');
+var numbersArr = numbers.split('');
+var specialcharArr = specialchar.split('');
+var passwordString = '';
+var passwordcharArr = [];
 
+console.log(lowercaseArr);
+var generateBtn = document.querySelector("#generate");
+function randChar(arr) {
+  return arr [Math.floor(Math.random() * arr.lenght-1)];
+}
+
+  function generatePassword () {
+
+    var lowercase = window.confirm("would you like your password to have a lowercase letters?");
+
+    if (lowercase) {
+      passwordcharArr.concat(lowercaseArr);
+      passwordString = randChar(lowercaseArr);
+    }
+    var uppercase = window.confirm ('Would your password to have uppercase letters?');
+
+    if (uppercase) {
+      passwordcharArr.concat(uppercaseArr);
+      passwordString = randChar(uppercaseArr);
+    }
+    
+    for (let index = passwordString.length; index < Number(userPasswordLength); index++);
+    passwordString+= randChar(passwordcharArr);
+  }
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
@@ -28,4 +61,4 @@ function writePassword() {
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", function() {(writePassword); })
+generateBtn.addEventListener("click", writePassword);
