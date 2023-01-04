@@ -24,20 +24,32 @@ function randChar(arr) {
       passwordcharArr.concat(lowercaseArr);
       passwordString = randChar(lowercaseArr);
     }
-    var uppercase = window.confirm ('Would your password to have uppercase letters?');
+    var uppercase = window.confirm ('Would you like your password to have uppercase letters?');
 
     if (uppercase) {
       passwordcharArr.concat(uppercaseArr);
       passwordString = randChar(uppercaseArr);
     }
+    var numbers = window.confirm ('Would you like your password to have numbers?');
+
+    if (numbers) {
+      passwordcharArr.concat(numbersArr);
+      passwordString = randChar(numbersArr);
+    }
+
+    var specialchar = window.confirm ('Would you like your password to have special characters?');
     
-    for (let index = passwordString.length; index < Number(userPasswordLength); index++);
+    if (specialchar) {
+      passwordcharArr.concat(specialArr);
+      passwordString = randChar(specialArr);
+    }
+    
     passwordString+= randChar(passwordcharArr);
   }
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
-  var passwordText = document.querySelector("password");
+  var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
 
